@@ -1,5 +1,6 @@
 .card {
-    width: 470px;
+    width: 95%;
+    min-width: 470px;
     height: 680px;
     display: flex;
     flex-direction: column;
@@ -7,7 +8,9 @@
     border: 1px solid #ff9143;
     border-radius: 20px;
     background-color: #1e202a;
+    margin-top: 20px;
 }
+
 
 .card__title {
     text-align: center;

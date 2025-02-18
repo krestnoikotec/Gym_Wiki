@@ -3,7 +3,7 @@ import styles from './card.module.css';
 
 const Card = ({ number, exercise }) => {
 
-    const truncatedDescription = exercise.explanation.slice(0, 100)
+    const truncatedDescription = exercise.explanation.slice(0, 110)
 
     return (
         <div className={styles.card}>
