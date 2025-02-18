@@ -5,7 +5,7 @@
     "muscleGroup": "Chest",
     "explanation": "The barbell bench press is a fundamental compound exercise that targets the chest, shoulders, and triceps. It is a staple movement for building upper body strength and muscle mass. By lying on a flat bench and pressing a weighted barbell upwards, you engage the pectoral muscles, anterior deltoids, and triceps.",
     "tips": "Keep your feet flat on the ground and maintain a slight arch in your lower back for stability.\nGrip the bar slightly wider than shoulder-width to maximize chest engagement.\nLower the bar slowly to your chest, keeping your elbows at about a 75-degree angle.\nPress the bar explosively upward while keeping your core tight.\nDo not bounce the bar off your chest—control the movement at all times.\nEngage your scapula by pulling your shoulder blades together to maintain proper form.",
-    "gifExample": "/exercises/Barbell-Bench-Press.gif"
+    "gifExample": "exercises/Barbell-Bench-Press.gif"
   },
   {
     "exercisesName": "Barbell Incline Bench Press",

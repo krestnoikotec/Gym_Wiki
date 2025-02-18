@@ -7,7 +7,7 @@ import FilterList from "./components/filterList/FilterList.jsx";
 function App() {
 
     useEffect(() => {
-        fetch('exercises.json')
+        fetch('public/exercises.json')
             .then(res => res.json())
             .then(exercises => setExercises(exercises))
             .catch(err => console.log('Error fetching exercises:', err));
