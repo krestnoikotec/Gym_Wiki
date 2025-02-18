@@ -1,5 +1,6 @@
 {
   "name": "gym",
+  "homepage": "https://krestnoikotec.github.io/Gym_Wiki/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.0.0",
