@@ -1,5 +1,6 @@
 .filter_group{
     width: 100%;
+    height: min-content;
     background-color: #d37b3d;
     color: white;
     border-radius: 15px;
