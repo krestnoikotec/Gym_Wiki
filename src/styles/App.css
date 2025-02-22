@@ -3,3 +3,15 @@
     grid-template-columns: 400px 1fr;
     gap: 20px;
 }
+
+.cards_and_search__container{
+    display: flex;
+    flex-direction: column;
+}
+
+.search__container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+}

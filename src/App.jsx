@@ -3,12 +3,13 @@ import './styles/App.css'
 import Header from "./components/header/Header.jsx";
 import CardList from "./components/cardList/CardList.jsx";
 import FilterList from "./components/filterList/FilterList.jsx";
+import Search from "./components/search/Search.jsx";
 
 function App() {
 
     useEffect(() => {
         const baseURL = window.location.hostname === 'localhost'
-            ? 'http://localhost:5176/Gym_Wiki/'  // Локальний сервер
+            ? 'http://localhost:5175/Gym_Wiki/'  // Локальний сервер
             : 'https://krestnoikotec.github.io/Gym_Wiki/';  // GitHub Pages
 
         fetch(`${baseURL}exercises.json`)
@@ -36,7 +37,12 @@ function App() {
           <Header/>
           <div className="body__container">
               <FilterList filterItems={filterItems} />
-              <CardList exercises={exercises}/>
+              <div className="cards_and_search__container">
+                  <div className="search__container">
+                      <Search/>
+                  </div>
+                  <CardList exercises={exercises}/>
+              </div>
           </div>
       </div>
   )

@@ -6,6 +6,10 @@
     border-radius: 15px;
 }
 
+.filter_group:last-child{
+    padding-bottom: 10px;
+}
+
 .filter__title{
     margin-left: 10px;
 }

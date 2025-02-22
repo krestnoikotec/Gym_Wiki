@@ -1,0 +1,29 @@
+.btn {
+    padding: 9px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #d37b3d;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.btn:hover {
+    background-color: #e38537;
+    box-shadow: 0 0 20px #e3853750;
+    transform: scale(1.1);
+}
+
+.btn:active {
+    background-color: #9c550e;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+    outline: none;
+}
+
+.btn:focus{
+    outline: none;
+}

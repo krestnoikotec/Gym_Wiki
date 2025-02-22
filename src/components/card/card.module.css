@@ -1,7 +1,7 @@
 .card {
     width: 95%;
     min-width: 470px;
-    height: 680px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,4 +43,10 @@
 .card__desc {
     margin: 10px 0 0 0;
     padding: 0 25px;
+}
+
+.btn_container{
+    width: 100%;
+    align-items: start;
+    margin: 10px 0 0 50px;
 }
