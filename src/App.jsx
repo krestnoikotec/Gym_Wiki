@@ -32,11 +32,11 @@ function App() {
         }
     ]
 
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 920);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 920 && window.screen.width > 920);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsDesktop(window.innerWidth > 920);
+            setIsDesktop(window.innerWidth > 920 && window.screen.width > 920);
         };
 
         window.addEventListener('resize', handleResize);
