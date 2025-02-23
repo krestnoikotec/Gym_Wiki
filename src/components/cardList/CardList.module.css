@@ -4,8 +4,10 @@
 }
 
 @media (max-width: 920px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    .post__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

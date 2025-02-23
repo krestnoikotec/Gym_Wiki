@@ -9,10 +9,10 @@ function App() {
 
     useEffect(() => {
         const baseURL = window.location.hostname === 'localhost'
-            ? 'http://localhost:5173/Gym_Wiki/'  // Локальний сервер
+            ? 'http://localhost:5174/Gym_Wiki/'  // Локальний сервер
             : 'https://krestnoikotec.github.io/Gym_Wiki/';  // GitHub Pages
 
-        fetch(`${baseURL}exercises.json?v=2`)
+        fetch(`${baseURL}exercises.json`)
             .then(res => res.json())
             .then(exercises => setExercises(exercises))
             .catch(err => console.log('Error fetching exercises:', err));

@@ -15,9 +15,15 @@
 }
 
 .input:hover {
-    box-shadow: 0 0 0 .15vw rgba(211, 123, 61, 0.186);
+    box-shadow: 0 0 0 3px rgba(211, 123, 61, 0.186);
 }
 
 .input:focus {
-    box-shadow: 0 0 0 .15vw #d37b3d;
+    box-shadow: 0 0 0 3px #d37b3d;
+}
+
+@media (max-width: 470px){
+    .input{
+        width: 300px;
+    }
 }
