@@ -9,7 +9,7 @@ function App() {
 
     useEffect(() => {
         const baseURL = window.location.hostname === 'localhost'
-            ? 'http://localhost:5175/Gym_Wiki/'  // Локальний сервер
+            ? 'http://localhost:5173/Gym_Wiki/'  // Локальний сервер
             : 'https://krestnoikotec.github.io/Gym_Wiki/';  // GitHub Pages
 
         fetch(`${baseURL}exercises.json`)
@@ -32,11 +32,22 @@ function App() {
         }
     ]
 
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 920);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth > 920);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
   return (
       <div>
           <Header/>
           <div className="body__container">
-              <FilterList filterItems={filterItems} />
+              {isDesktop && <FilterList filterItems={filterItems}/>}
               <div className="cards_and_search__container">
                   <div className="search__container">
                       <Search/>

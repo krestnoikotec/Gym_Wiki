@@ -2,3 +2,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
 }
+
+@media (max-width: 920px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
