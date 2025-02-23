@@ -13,3 +13,11 @@
 .filter__title{
     margin-left: 10px;
 }
+
+@media (max-width: 920px){
+    .filter_group{
+        margin-top: 0;
+        width: 100vw;
+        height: 100%;
+    }
+}

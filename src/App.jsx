@@ -4,6 +4,7 @@ import Header from "./components/header/Header.jsx";
 import CardList from "./components/cardList/CardList.jsx";
 import FilterList from "./components/filterList/FilterList.jsx";
 import Search from "./components/search/Search.jsx";
+import ShowMore from "./components/showMore/ShowMore.jsx";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
     ]
 
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 920 && window.screen.width > 920);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -46,11 +48,17 @@ function App() {
   return (
       <div>
           <Header/>
+          {!isDesktop && (
+              <div className={`filter-panel ${isFilterOpen ? "open" : ""}`}>
+                  <FilterList filterItems={filterItems}/>
+              </div>
+          )}
           <div className="body__container">
               {isDesktop && <FilterList filterItems={filterItems}/>}
               <div className="cards_and_search__container">
                   <div className="search__container">
                       <Search/>
+                      {!isDesktop && <ShowMore onClick={() => setIsFilterOpen(!isFilterOpen)}/>}
                   </div>
                   <CardList exercises={exercises}/>
               </div>

@@ -22,8 +22,8 @@
     box-shadow: 0 0 0 3px #d37b3d;
 }
 
-@media (max-width: 470px){
+@media (max-width: 500px){
     .input{
-        width: 300px;
+        width: 250px;
     }
 }
