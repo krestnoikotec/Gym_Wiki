@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import './styles/App.css'
 import Header from "./components/header/Header.jsx";
 import CardList from "./components/cardList/CardList.jsx";
@@ -10,7 +10,7 @@ function App() {
 
     useEffect(() => {
         const baseURL = window.location.hostname === 'localhost'
-            ? 'http://localhost:5176/Gym_Wiki/'  // Локальний сервер
+            ? 'http://localhost:5177/Gym_Wiki/'  // Локальний сервер
             : 'https://krestnoikotec.github.io/Gym_Wiki/';  // GitHub Pages
 
         fetch(`${baseURL}exercises.json`)
@@ -24,10 +24,12 @@ function App() {
     const muscle =[...new Set(exercises.flatMap(ex => ex.muscleGroup))];
     const filterItems = [
         {
+            key: "equipment",
             title: "Equipment",
             items: equip
         },
         {
+            key: "muscle",
             title: "Muscle Group",
             items: muscle
         }
@@ -45,22 +47,57 @@ function App() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-  return (
+    const [filter, setFilter] = useState({muscle: "", equipment: "", query: ""});
+
+    const sortedCards = useMemo(() => {
+        return [...exercises].filter(ex => {
+            if (filter.muscle && !ex.muscleGroup.includes(filter.muscle)) {
+                return false; // Відфільтровуємо за м'язовою групою
+            }
+            if (filter.equipment && !ex.equipment.includes(filter.equipment)) {
+                return false; // Відфільтровуємо за обладнанням
+            }
+            return true;
+        });
+    }, [filter.muscle, filter.equipment, exercises]);
+
+    const sortedAndSearchedCards = useMemo(() => {
+        const query = filter.query.toLowerCase();
+        if (!query) return sortedCards; // Якщо запит порожній, повертаємо всі картки
+
+        // Фільтруємо картки, де назва містить запит
+        const filteredCards = sortedCards.filter(card =>
+            card.exercisesName.toLowerCase().includes(query)
+        );
+
+        // Сортуємо: спочатку ті, що починаються з запиту, потім інші, з алфавітним порядком
+        filteredCards.sort((a, b) => {
+            if(a.exercisesName.toLowerCase().startsWith(query) && !b.exercisesName.toLowerCase().startsWith(query)) return -1;
+            if(!a.exercisesName.toLowerCase().startsWith(query) && b.exercisesName.toLowerCase().startsWith(query)) return 1;
+
+            return a.exercisesName.toLowerCase().localeCompare(b.exercisesName.toLowerCase());
+        });
+
+        return filteredCards;
+    }, [filter.query, sortedCards]);
+
+
+    return (
       <div>
           <Header/>
           {!isDesktop && (
               <div className={`filter-panel ${isFilterOpen ? "open" : ""}`}>
-                  <FilterList filterItems={filterItems}/>
+                  <FilterList filterItems={filterItems} filter={filter} setFilter={setFilter}/>
               </div>
           )}
           <div className="body__container">
-              {isDesktop && <FilterList filterItems={filterItems}/>}
+              {isDesktop && <FilterList filterItems={filterItems} filter={filter} setFilter={setFilter}/>}
               <div className="cards_and_search__container">
                   <div className="search__container">
-                      <Search/>
+                      <Search value={filter.query} onChange={e => setFilter({...filter, query: e.target.value})}/>
                       {!isDesktop && <ShowMore onClick={() => setIsFilterOpen(!isFilterOpen)}/>}
                   </div>
-                  <CardList exercises={exercises}/>
+                  <CardList exercises={sortedAndSearchedCards}/>
               </div>
           </div>
       </div>

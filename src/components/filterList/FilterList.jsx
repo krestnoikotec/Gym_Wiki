@@ -2,22 +2,26 @@ import React from 'react';
 import styles from './FilterList.module.css';
 import Filter from "../filter/Filter.jsx";
 
-const FilterList = ({ filterItems }) => {
+const FilterList = ({ filterItems, filter, setFilter }) => {
 
-    const [selectedFilters, setSelectedFilters] = React.useState({});
-
-    const handleFilterChange = (name, value) => {
-        setSelectedFilters((prevState) => ({
+    const handleFilterChange = (key, value) => {
+        setFilter(prevState => ({
             ...prevState,
-            [name]: prevState[name] === value ? null : value
-        }))
-    }
+            [key]: prevState[key] === value ? '' : value // Якщо вибрано те саме значення, скидаємо фільтр
+        }));
+    };
 
     const renderFilterGroup = (section) => (
-        <div className={styles.filter_group} key={section.title}>
+        <div className={styles.filter_group} key={section.key}>
             <h1 className={styles.filter__title}>{section.title}</h1> {/* Заголовок для групи */}
             {section.items.map((item, index) => (
-                <Filter key={index} label={item} name={section.title} checked={selectedFilters[section.title] === item} onChange={() => handleFilterChange(section.title, item)} />
+                <Filter
+                    key={index}
+                    label={item}
+                    name={section.title}
+                    checked={filter[section.key] === item}
+                    onChange={() => handleFilterChange(section.key, item)}
+                />
             ))}
         </div>
     );

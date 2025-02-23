@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from './Search.module.css';
 
-const Search = () => {
+const Search = ({...props}) => {
     return (
-        <input type="text" name="text" className={styled.input} placeholder="Write the name of the exercise" />
+        <input type="text" name="text" className={styled.input} placeholder="Write the name of the exercise" {...props}/>
     );
 }
 
