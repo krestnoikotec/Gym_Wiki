@@ -1,7 +1,11 @@
+*{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .body__container {
     display: grid;
     grid-template-columns: 400px 1fr;
-    gap: 20px;
 }
 
 .cards_and_search__container{

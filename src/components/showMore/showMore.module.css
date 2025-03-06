@@ -27,7 +27,7 @@
 }
 
 .burger span:nth-of-type(1) {
-    top: 0px;
+    top: 0;
     transform-origin: left center;
 }
 
