@@ -5,6 +5,7 @@ import CardList from "./components/cardList/CardList.jsx";
 import FilterList from "./components/filterList/FilterList.jsx";
 import Search from "./components/search/Search.jsx";
 import ShowMore from "./components/showMore/ShowMore.jsx";
+import Modal from "./components/modal/Modal.jsx";
 
 function App() {
 
@@ -37,7 +38,8 @@ function App() {
 
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 920 && window.screen.width > 920);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
-
+    const [selectedExercise, setSelectedExercise] = useState(null);
+    const [filter, setFilter] = useState({muscle: "", equipment: "", query: ""});
 
     useEffect(() => {
         const handleResize = () => {
@@ -48,7 +50,20 @@ function App() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const [filter, setFilter] = useState({muscle: "", equipment: "", query: ""});
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            // Якщо відкрита модалка та натиснута клавіша "Space"
+            if (selectedExercise && (e.key === " " || e.key === "Spacebar" || e.keyCode === 32)) {
+                e.preventDefault();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown, { passive: false });
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [selectedExercise]);
 
     const sortedCards = useMemo(() => {
         return [...exercises].filter(ex => {
@@ -82,6 +97,30 @@ function App() {
         return filteredCards;
     }, [filter.query, sortedCards]);
 
+    const openModal = (exercise) => {
+        setSelectedExercise(exercise);
+        const scrollY = window.scrollY;
+        document.body.style.top = `-${scrollY}px`;
+
+        // Фіксуємо тіло, щоб не було скролу
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+        document.body.style.overflow = "hidden";
+    }
+
+    const closeModal = () => {
+        setSelectedExercise(null);
+        const scrollY = parseInt(document.body.style.top || "0") * -1;
+
+        // Повертаємо стилі назад
+        document.body.style.position = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        document.body.style.top = "";
+
+        // Відновлюємо скрол на попередню позицію
+        window.scrollTo(0, scrollY);
+    }
 
     return (
       <div style={{overflowX: "hidden"}}>
@@ -98,9 +137,10 @@ function App() {
                       <Search value={filter.query} onChange={e => setFilter({...filter, query: e.target.value})}/>
                       {!isDesktop && <ShowMore onClick={() => setIsFilterOpen(!isFilterOpen)}/>}
                   </div>
-                  <CardList exercises={sortedAndSearchedCards}/>
+                  <CardList exercises={sortedAndSearchedCards} onExerciseClick={openModal}/>
               </div>
           </div>
+          {selectedExercise && <Modal exercise={selectedExercise} onClose={closeModal}/>}
       </div>
   )
 }

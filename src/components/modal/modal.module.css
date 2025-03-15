@@ -1,0 +1,39 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal__content {
+    background: #1e202a;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh; /* Задаємо максимальну висоту */
+    overflow-y: auto;  /* Дозволяємо прокрутку */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.modal__title {
+    overflow-y: hidden;
+    margin: 0 0 25px 0;
+    text-align: center;
+}
+
+.modal__img{
+    width: 90%;
+    border-radius: 10px;
+}
+
+.modal__text{
+    border: 2px solid #9e9e9e;
+    border-radius: 10px;
+    padding: 5px;
+}

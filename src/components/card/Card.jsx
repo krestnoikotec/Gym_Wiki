@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './card.module.css';
 import Button from "../button/Button.jsx";
 
-const Card = ({ number, exercise }) => {
+const Card = ({ number, exercise, onExercise }) => {
 
     const truncatedDescription = exercise.explanation.slice(0, 110)
 
@@ -18,7 +18,7 @@ const Card = ({ number, exercise }) => {
             </div>
             <p className={styles.card__desc}>{truncatedDescription}...</p>
             <div className={styles.btn_container}>
-                <Button>
+                <Button onClick={() => onExercise(exercise)}>
                     Show more
                 </Button>
             </div>
