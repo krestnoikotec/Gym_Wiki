@@ -10,9 +10,9 @@ const Modal = ({exercise, onClose}) => {
                 </h1>
                 <img src={exercise.gifExample} alt={`Exercise ${exercise.exercisesName}`} className={styles.modal__img}/>
                 <p className={styles.modal__text}>{exercise.explanation}</p>
-                <div className={styles.modal__tips}>
+                <div className={styles.modal__text}>
                     {exercise.tips.split('\n').map((line, index) => (
-                        <p className={styles.modal__tips-paragraph} key={index}>{line}</p>
+                        <p className={styles.modal__tip} key={index}>{line}</p>
                     ))}
                 </div>
             </div>
