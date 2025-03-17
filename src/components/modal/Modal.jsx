@@ -9,7 +9,9 @@ const Modal = ({exercise, onClose}) => {
                     {exercise.exercisesName}
                 </h1>
                 <img src={exercise.gifExample} alt={`Exercise ${exercise.exercisesName}`} className={styles.modal__img}/>
+                <h>Explanation:</h>
                 <p className={styles.modal__text}>{exercise.explanation}</p>
+                <h2>Tips:</h2>
                 <div className={styles.modal__text}>
                     {exercise.tips.split('\n').map((line, index) => (
                         <p className={styles.modal__tip} key={index}>{line}</p>
