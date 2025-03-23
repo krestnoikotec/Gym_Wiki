@@ -1,0 +1,35 @@
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #ff9143;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease all;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top svg {
+    transform: rotate(270deg);
+    fill: white;
+    width: 24px;
+    height: 24px;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: #ff7300;
+}

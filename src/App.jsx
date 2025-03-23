@@ -6,12 +6,14 @@ import FilterList from "./components/filterList/FilterList.jsx";
 import Search from "./components/search/Search.jsx";
 import ShowMore from "./components/showMore/ShowMore.jsx";
 import Modal from "./components/modal/Modal.jsx";
+import BackToTop from "./components/backToTop/BackToTop.jsx";
+import firebase from './firebase';
 
 function App() {
 
     useEffect(() => {
         const baseURL = window.location.hostname === 'localhost'
-            ? 'http://localhost:5174/Gym_Wiki/'  // Локальний сервер
+            ? 'http://localhost:5173/Gym_Wiki/'  // Локальний сервер
             : 'https://krestnoikotec.github.io/Gym_Wiki/';  // GitHub Pages
 
         fetch(`${baseURL}exercises.json`)
@@ -139,6 +141,7 @@ function App() {
               </div>
           </div>
           {selectedExercise && <Modal exercise={selectedExercise} onClose={closeModal}/>}
+          <BackToTop/>
       </div>
   )
 }
