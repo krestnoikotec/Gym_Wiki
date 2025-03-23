@@ -9,7 +9,7 @@ const Modal = ({exercise, onClose}) => {
                     {exercise.exercisesName}
                 </h1>
                 <img src={exercise.gifExample} alt={`Exercise ${exercise.exercisesName}`} className={styles.modal__img}/>
-                <h>Explanation:</h>
+                <h2>Explanation:</h2>
                 <p className={styles.modal__text}>{exercise.explanation}</p>
                 <h2>Tips:</h2>
                 <div className={styles.modal__text}>

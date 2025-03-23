@@ -11,7 +11,7 @@ function App() {
 
     useEffect(() => {
         const baseURL = window.location.hostname === 'localhost'
-            ? 'http://localhost:5174/Gym_Wiki/'  // Локальний сервер
+            ? 'http://localhost:5173/Gym_Wiki/'  // Локальний сервер
             : 'https://krestnoikotec.github.io/Gym_Wiki/';  // GitHub Pages
 
         fetch(`${baseURL}exercises.json`)
@@ -102,7 +102,6 @@ function App() {
         const scrollY = window.scrollY;
         document.body.style.top = `-${scrollY}px`;
 
-        // Фіксуємо тіло, щоб не було скролу
         document.body.style.position = "fixed";
         document.body.style.width = "100%";
         document.body.style.overflow = "hidden";
@@ -112,7 +111,6 @@ function App() {
         setSelectedExercise(null);
         const scrollY = parseInt(document.body.style.top || "0") * -1;
 
-        // Повертаємо стилі назад
         document.body.style.position = "";
         document.body.style.width = "";
         document.body.style.overflow = "";

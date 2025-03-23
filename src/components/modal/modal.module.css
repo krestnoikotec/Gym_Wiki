@@ -20,6 +20,11 @@
     padding: 20px;
     border-radius: 20px;
     border: 1px solid #ff9143;
+    scrollbar-width: none;
+}
+
+.modal__content::-webkit-scrollbar {
+    display: none;
 }
 
 .modal__title {
@@ -40,4 +45,10 @@
     border-radius: 10px;
     padding: 5px 8px;
     font-size: 20px;
+}
+
+@media (max-width: 500px) {
+    .modal__content{
+        width: 350px;
+    }
 }

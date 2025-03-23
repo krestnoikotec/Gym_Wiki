@@ -8,6 +8,7 @@
     font-weight: Bold;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
+    margin: 5px;
 }
 
 .btn:hover {
