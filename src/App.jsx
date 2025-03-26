@@ -7,7 +7,6 @@ import Search from "./components/search/Search.jsx";
 import ShowMore from "./components/showMore/ShowMore.jsx";
 import Modal from "./components/modal/Modal.jsx";
 import BackToTop from "./components/backToTop/BackToTop.jsx";
-import firebase from './firebase';
 
 function App() {
 
@@ -38,14 +37,14 @@ function App() {
         }
     ]
 
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 920 && window.screen.width > 920);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1200 && window.screen.width > 1200);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [selectedExercise, setSelectedExercise] = useState(null);
     const [filter, setFilter] = useState({muscle: "", equipment: "", query: ""});
 
     useEffect(() => {
         const handleResize = () => {
-            setIsDesktop(window.innerWidth > 920 && window.screen.width > 920);
+            setIsDesktop(window.innerWidth > 1200 && window.screen.width > 1200);
         };
 
         window.addEventListener('resize', handleResize);
