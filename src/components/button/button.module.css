@@ -1,4 +1,5 @@
 .btn {
+    display: flex;
     overflow: visible;
     padding: 9px;
     border: 0;
@@ -9,11 +10,11 @@
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     margin: 5px;
+    justify-content: center;
 }
 
 .btn:hover {
     background-color: #e38537;
-    box-shadow: 0 0 20px #e3853750;
     transform: scale(1.1);
 
 }
