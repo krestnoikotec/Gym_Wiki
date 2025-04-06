@@ -27,14 +27,9 @@
     display: none;
 }
 
-.modal__header{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-}
-
-.modal__header:last-child{
-    position: absolute;
+.modal__close__wrapper{
+    display: flex;
+    justify-content: end;
 }
 
 .modal__title {
